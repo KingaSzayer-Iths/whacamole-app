@@ -150,7 +150,7 @@ function App() {
     <>
       {!playing && !finished && 
       <>
-        <h1>Whac-A-Mole</h1>
+        <h1>SPEED</h1>
         <button onClick={startGame}>Start Game</button>
       </>}
 
