@@ -97,7 +97,7 @@ function App() {
   const [playing, setPlaying] = useState(false)
   const [finished, setFinished] = useState(false)
   const [score, setScore] = useState(0)
-  const [moles, setMoles] = useState(generateMoles(NUMBER_OF_MOLES))
+  const [moles, setMoles] = useState([])
   const [highScore, setHighScore] = usePersistentState('whac-a-mole-hi', 0)
   const [newHighScore, setNewHighScore] = useState(false)
 
@@ -113,6 +113,7 @@ function App() {
   }
   
   const startGame = () => {
+    setMoles(generateMoles(NUMBER_OF_MOLES))
     setScore(0)
     setPlaying(true)
     setFinished(false)
