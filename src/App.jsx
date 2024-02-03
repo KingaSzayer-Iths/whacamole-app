@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import Timer from "./components/Timer"
 import gsap from "gsap"
-import { getSpaceUntilMaxLength } from "@testing-library/user-event/dist/utils"
+// import { getSpaceUntilMaxLength } from "@testing-library/user-event/dist/utils"
 
 
 const TIME_LIMIT = 30000
