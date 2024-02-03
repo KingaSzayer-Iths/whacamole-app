@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react"
 import Timer from "./components/Timer"
 import gsap from "gsap"
+import { getSpaceUntilMaxLength } from "@testing-library/user-event/dist/utils"
 
 
-const TIME_LIMIT = 10000
+const TIME_LIMIT = 30000
 const MOLE_SCORE = 100
 const NUMBER_OF_MOLES = 5
 const POINTS_MULTIPLIER = 0.9
@@ -33,7 +34,7 @@ const useAudio = (src, volume = 1) => {
     const AUDIO = new Audio(src)
     AUDIO.volume = volume
     setAudio(AUDIO)
-  }, [src,volume])
+  }, [src, volume])
   return {
     play: () => audio.play(),
     pause: () => audio.pause(),
@@ -50,6 +51,9 @@ const Mole = ({ onWhack, points, delay, speed, pointsMin = 10 }) => {
   const bobRef = useRef(null)
   const pointsRef = useRef(points)
   const buttonRef = useRef(null)
+
+  const [image, setImage] = useState(Math.floor(Math.random() * 5)) 
+
   useEffect(() => {
     gsap.set(buttonRef.current, {
       yPercent: 100,
@@ -95,12 +99,13 @@ const Mole = ({ onWhack, points, delay, speed, pointsMin = 10 }) => {
   
   const whack = () => {
     setWhacked(true)
-    onWhack(pointsRef.current)   
+    onWhack(pointsRef.current)  
+    setImage(Math.floor(Math.random() * 5))
   }
   return (
-    <div className="mole-hole">
+    <div className="mole-hole" >
       <button
-        className="mole"
+        className={"mole mole"+image}
         ref={buttonRef}
         onClick={whack}><span className="sr-only">Whack</span></button>
     </div>
@@ -145,7 +150,7 @@ function App() {
   /* Ctrl+Alt+R (skriv) _rafce  (=for att Create Function Component with ES7module system) */
   /* Ctrl+B (=for att gömma file fältet)*/
   /* Ctrl+Shift+Ö (=öppna new Terminal) */
-  
+ 
   return (
     <>
       {!playing && !finished && 
@@ -170,7 +175,7 @@ function App() {
             
           <Moles>
             {moles.map(({delay, speed, points}, index) => (
-              <Mole
+              <Mole 
                 key={index}
                 onWhack={onWhack}
                 points={points}

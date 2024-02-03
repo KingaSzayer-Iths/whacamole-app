@@ -31,11 +31,36 @@ body {
 
 .mole {
   display: none;
-  background: url(https://assets.codepen.io/605876/mole-out-of-hole.svg);
-  background-size: cover;
+  /*url(https://assets.codepen.io/605876/mole-out-of-hole.svg);*/
+  /* background-size: cover; */
   height: 100%;
   width: 100%;
   border: 0;
+}
+
+.mole1 {
+  background: url(./images/mika.JPG); 
+  background-size: cover;
+}
+
+.mole2 {
+  background: url(./images/gerson.jpg); 
+  background-size: cover;
+}
+
+.mole3 {
+  background: url(./images/jonas.jpg); 
+  background-size: cover;
+}
+
+.mole4 {
+  background: url(./images/kinga.jpg); 
+  background-size: cover;
+}
+
+.mole0 {
+  background: url(./images/bita1.jpg); 
+  background-size: cover;
 }
 
 .mole-hole {
