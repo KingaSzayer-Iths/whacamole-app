@@ -27,6 +27,23 @@ const usePersistentState = (key, initialValue) => {
   return [state, setState]
 }
 
+const useAudio = (src, volume = 1) => {
+  const [audio, setAudio] = useState(null)
+  useEffect(() => {
+    const AUDIO = new Audio(src)
+    AUDIO.volume = volume
+    setAudio(AUDIO)
+  }, [src])
+  return {
+    play: () => audio.play(),
+    pause: () => audio.pause(),
+    stop: () => {
+      audio.pause()
+      audio.currentTime = 0
+    },
+  }
+}
+
 const Moles = ({ children }) => <div className="moles">{children}</div>
 const Mole = ({ onWhack, points, delay, speed, pointsMin = 10 }) => {
   const [whacked, setWhacked] = useState(false)
@@ -100,8 +117,12 @@ function App() {
   const [moles, setMoles] = useState([])
   const [highScore, setHighScore] = usePersistentState('whac-a-mole-hi', 0)
   const [newHighScore, setNewHighScore] = useState(false)
+  const { play: playSqueak } = useAudio('https://assets.codepen.io/605876/squeak-in.mp3')
 
-  const onWhack = points => setScore(score + points)
+  const onWhack = points => {
+    playSqueak() 
+    setScore(score + points)
+  }
 
   const endGame = () => {
     setPlaying(false)
