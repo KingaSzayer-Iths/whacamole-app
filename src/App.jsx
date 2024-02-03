@@ -33,7 +33,7 @@ const useAudio = (src, volume = 1) => {
     const AUDIO = new Audio(src)
     AUDIO.volume = volume
     setAudio(AUDIO)
-  }, [src])
+  }, [src,volume])
   return {
     play: () => audio.play(),
     pause: () => audio.pause(),
