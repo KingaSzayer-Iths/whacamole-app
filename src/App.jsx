@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react"
 import Timer from "./components/Timer"
 import gsap from "gsap"
+// import PropTypes from 'prop-types'
+// import splitting from "splitting"
+
+// const confetti = require('canvas-confetti');
 // import { getSpaceUntilMaxLength } from "@testing-library/user-event/dist/utils"
 
 
@@ -116,13 +120,50 @@ const Score = ({ value }) => <div className='info-text'>{`Score: ${value}`}</div
 
 
 function App() {
+  const [moles, setMoles] = useState([])
   const [playing, setPlaying] = useState(false)
   const [finished, setFinished] = useState(false)
   const [score, setScore] = useState(0)
-  const [moles, setMoles] = useState([])
-  const [highScore, setHighScore] = usePersistentState('whac-a-mole-hi', 0)
   const [newHighScore, setNewHighScore] = useState(false)
+  // const [muted, setMuted] = usePersistentState('whac-muted', true)
+  const [highScore, setHighScore] = usePersistentState('whac-a-mole-hi', 0)
   const { play: playSqueak } = useAudio('https://assets.codepen.io/605876/squeak-in.mp3')
+  // const { play: playSparkle } = useAudio(
+  //   'https://assets.codepen.io/605876/sparkle.mp3')
+    // const { play: playWhistle } = useAudio(
+    //   'https://assets.codepen.io/605876/whistle.mp3', 0.65)
+    // const { play: playThud } = useAudio(
+    //   'https://assets.codepen.io/605876/thud--small.mp3',0.65)
+    // const { play: playSparkle } = useAudio(
+    //   'https://assets.codepen.io/605876/sparkle.mp3')
+    // const { play: playCount } = useAudio(
+    //   'https://assets.codepen.io/605876/countdown-beep.mp3')
+    // const { play: playWhack } = useAudio(
+    //   'https://assets.codepen.io/605876/pop.mp3')
+    // const { play: playSqueakOut } = useAudio(
+    //   'https://assets.codepen.io/605876/squeak-out.mp3')
+    // const { play: playCheer } = useAudio(
+    //   'https://assets.codepen.io/605876/kids-cheering.mp3')
+    // const { play: playClick } = useAudio(
+    //   'https://assets.codepen.io/605876/click.mp3')
+
+  // const onWhack = (points, golden) => {
+  //   gsap.to(boardRef.current, {
+  //     yPercent: 2,
+  //     repeat: 1,
+  //     yoyo: true,
+  //     duration: 0.05,
+  //   })
+  //   if (!muted) {
+  //     playThud()
+  //     if (golden) playSparkle()
+  //     else {
+  //       // Play random noise from selection
+  //       ;[playWhack, playSqueak, playSqueakOut][Math.floor(Math.random() * 3)]()
+  //     }
+  //   }
+  //   setScore(score + points)
+  // }
 
   const onWhack = points => {
     playSqueak() 
