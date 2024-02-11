@@ -8,6 +8,7 @@ import confetti from 'canvas-confetti'
 // import { getSpaceUntilMaxLength } from "@testing-library/user-event/dist/utils"
 
 const malletSrc = 'https://assets.codepen.io/605876/mallet--optimized.svg'
+// const malletSrc = 'url(./images/mika.JPG)'
 
 // Constants
 const constants = {
@@ -221,6 +222,8 @@ const Mole = ({
   const bobRef = useRef(null)
   const eyesRef = useRef(null)
   const tummyRef = useRef(null)
+  const [image, setImage] = useState(Math.floor(Math.random() * 5)) 
+
 
   // Use a callback to cache the function and share it between effects.
   const setMole = useCallback(
@@ -492,6 +495,7 @@ return () => {
     setWhacked(true)
     renderScore(e.pageX, e.pageY)
     onWhack(pointsRef.current, pointsRef.current > constants.GOLDEN_SCORE * 0.5)
+    setImage(Math.floor(Math.random() * 5))
   }
 
   // Much of what is rendered is the Mole SVG and the Hole.
@@ -499,7 +503,8 @@ return () => {
   return (
     <div className="mole__hole" ref={moleContainerRef}>
       <svg
-        className="mole"
+        className={"mole mole"+image}
+        // className="mole"
         viewBox="0 0 200 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
