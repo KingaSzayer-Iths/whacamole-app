@@ -18,7 +18,7 @@ body {
   justify-content: center;
   overflow: hidden;
   margin: 0;
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Fredoka One';
   background: var(--sky);
 }
 
@@ -321,6 +321,7 @@ button:active {
 
 .mole__hole * {
   cursor: none;
+  border-radius: 60px 60px 0px 0px;
 }
 
 .mole__body {
